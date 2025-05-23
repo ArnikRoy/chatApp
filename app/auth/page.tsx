@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import Head from "next/head";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
