@@ -2,8 +2,12 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
+type Profile = {
+  id: string;
+};
+
 export default function SupabaseTest() {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<Profile[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

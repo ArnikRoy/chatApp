@@ -2,8 +2,13 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
+type Chat = {
+  id: string;
+  name: string;
+};
+
 export default function ChatsTest() {
-  const [chats, setChats] = useState<any[]>([]);
+  const [chats, setChats] = useState<Chat[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

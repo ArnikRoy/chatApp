@@ -112,15 +112,17 @@ export default function ChatWindow({ chatId, userId }: { chatId: string | null, 
       ]);
 
       setInput("");
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error uploading file:', error);
-      if (error.message.includes('Storage access denied')) {
-        alert('Storage access denied. Please contact the administrator to set up proper permissions.');
+      if (error instanceof Error) {
+        if (error.message.includes('Storage access denied')) {
+          alert('Storage access denied. Please contact the administrator to set up proper permissions.');
+        } else {
+          alert(`Error uploading file: ${error.message}`);
+        }
       } else {
-        alert(`Error uploading file: ${error.message}`);
+        alert('An unknown error occurred during file upload.');
       }
-    } finally {
-      setIsUploading(false);
     }
   };
 

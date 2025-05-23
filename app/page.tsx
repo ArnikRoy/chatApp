@@ -4,9 +4,11 @@ import { supabase } from "../lib/supabaseClient";
 import Sidebar from "../components/Sidebar";
 import ChatWindow from "../components/ChatWindow";
 import { useRouter } from "next/navigation";
+import { Session } from '@supabase/supabase-js';
 
 export default function Home() {
-  const [session, setSession] = useState<any>(null);
+  const [session, setSession] = useState<Session | null>(null);
+// Replace SessionType with the actual type you expect
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
   const router = useRouter();
 
@@ -19,7 +21,7 @@ export default function Home() {
       setSession(session);
       if (!session) router.push("/auth");
     });
-  }, []);
+  }, [router]);
 
   if (!session) return null;
 
